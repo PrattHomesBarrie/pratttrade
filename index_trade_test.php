@@ -15,7 +15,7 @@
 <script src="js/jquery-ui-1.8.16.custom.min.js"></script>
 <script src="js/jquery.dataTables.min.js"></script>
 <script src="includes/javascripts/prattScripts.js"></script>
-</head>
+</head>  
 
 <body>
 
