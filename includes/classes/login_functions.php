@@ -16,10 +16,27 @@ function validateLogin($dbSingleUse,$userName, $password) {
 			}
 		}
 		
+		
 		if ($resultCount > 0 ) {
 			$returnValue = true;
 			
 		}
+		else {
+			$query =  'SELECT username, count(*) as howMany FROM tradeList where username =  "'.$userName.'" and password = "'.$password.'" group by username';
+			//echo '<br>'.$query;
+			$resultCountTrade = 0;
+			if ($dbSingleUse->Query($query)) { 
+				while ($resultRow = $dbSingleUse->Row() ) {	
+					$resultCountTrade = $resultRow->howMany;
+					$realUserName = $resultRow->userName;
+				}
+				if ($resultCountTrade > 0 ) {
+				$returnValue = true;
+				
+			}
+			}
+		}
+		
 
 	return $returnValue;
 
